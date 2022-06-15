@@ -9,7 +9,8 @@
 </head>
 <body>
 <h1>
-	.반갑다 세계야!
+	 반갑다 세계야!
+>>>>>>> branch 'main' of https://github.com/wlswldnwjd/K_Test1
 </h1>
 
 <P>  서버의 시간은 ${serverTime}. </P>
