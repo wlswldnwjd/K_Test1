@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+ <mapper namespace="org.zerock.mapper.BoardMapper">
+ 	
+ 	<!-- 목록보기 -->
+ 	<select id="getList" resultType="org.zerock.domain.BoardVO">
+ 		<![CDATA[ select * from tbl_board order by bno desc
+ 		]]>
+  	</select>
+  	
+  	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+  		<![CDATA[
+  	select bno, title, writer, regdate, updatedate
+		from(select rownum rn, bno, title, writer, regdate, updatedate
+	    from(select * from tbl_board order by bno desc)
+	    where rownum <=( #{pageNum} * #{amount}))
+	where rn>(( #{pageNum}-1) *#{amount})
+		]]>
+  	</select>
+  	
+  	<!-- 글등록1 -->
+  	<insert id="insert">
+	  	insert into tbl_board(bno,title,content,writer) 
+		values(seq_board.nextval,#{title},#{content},#{writer})
+  	</insert>
+  	
+  	<!-- 글등록2 -->
+  	<insert id="insertSelectKey">
+  		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+  		select seq_board.nextval from dual
+  		</selectKey>
+  	
+  		insert into tbl_board(bno,title,content,writer) 
+		values(${bno},#{title},#{content},#{writer})
+  	</insert>
+  	
+  	
+  	<!-- 글 상세보기 -->
+  	<select id="read" resultType="org.zerock.domain.BoardVO">
+  		select * from tbl_board where bno=#{bno}
+  	</select>
+  	
+  	<!-- 글 삭제 -->
+  	<delete id="delete">
+  	delete from tbl_board where bno=#{bno}
+  	</delete>
+  	
+  	<!-- 글 수정 -->
+  	<update id="update">
+  	update tbl_board 
+	set title=#{title}, content=#{content},writer=#{writer},updatedate=sysdate 
+	where bno=#{bno}
+  	</update>
+  	
+  	
+  	
+	<!-- 글 개수 -->
+  	<select id="count" resultType="long">
+  		select count(*) from tbl_board
+  	</select>
+ 
+ 	<!-- 유저별 글 개수 -->
+ 	<select id="count1" resultType="long">
+ 		select count(*) from tbl_board where writer=#{writer}  
+  	</select>
+ 
+ 
+ 
+ 	<select id="quiz1" resultType="org.zerock.domain.CountVO">
+ 	select writer, count(*) "count" from tbl_board group by writer
+ 	</select>
+ 	
+ 	<select id="quiz2" resultType="org.zerock.domain.BoardVO">
+ 	select DISTINCT title,writer from tbl_board
+ 	</select>
+ 
+ 
+ </mapper>

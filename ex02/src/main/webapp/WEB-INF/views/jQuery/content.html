@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- jQuery 라이브러리 코드 필수 -->
+ <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script>
+        $(document).ready(function () {
+            $("#text").click(function () {
+                alert($("#target").text());		//.text는 html요소 빼고 보여줌
+            });
+            $("#html").click(function () {
+                alert($("#target").html());		//.html는 html요소 포함해서 보여줌
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="target">이것은 <strong>하나의</strong> 단락입니다.</p>
+    <button id="text">text()</button>
+    <button id="html">html()</button>
+</body>
+</html>

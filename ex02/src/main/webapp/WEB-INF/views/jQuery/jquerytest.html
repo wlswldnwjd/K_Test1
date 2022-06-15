@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+html파일이므로 서버로 돌릴 필요없이 바로 브라우저로 열어서 확인!
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<div id="myPara">여기는 단락</div>
+
+
+<h2 id="hide">클릭하면 사라집니다.</h2>
+
+<h2 id="show">클릭하면 나타납니다.</h2>
+
+<h1 class="show">나도 id show</h1>
+
+
+<script>
+$("#myPara").html("이걸로 변경");		//div태그의 "여기는 단락"내용을 "이걸로 변경" 변경
+</script>
+
+<script>
+$(document).ready(function name() {
+	
+$("h1.hide").click(function() {
+		$("#myPara").hide();			//h2클릭하면 해당 함수 실행 this=h2
+	});	
+	
+$("#show").click(function() {
+		$("#myPara").show();			
+	});	
+});
+
+</script>
+
+
+</body>
+</html>

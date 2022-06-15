@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	id:<input type="text"  id="id"><br>
+	pw:<input type="password" id="pw"><br>
+	<input id="a" type="submit" value="확인1">
+	<input id="b" type="submit" value="확인2">
+	<!-- <button id="b">확인2</button>-->
+	
+<span></span>		<!-- 내용이 비어 있는 태그 -->
+
+</body>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+<script type="text/javascript">
+	$("#id").val("aaaa");
+		$("#a").click(function() {
+		console.log("확인1클릭")	
+		$("span").text($("#id").val());		//span(빈)태그에 창에 입력한 id값을 넣어라
+	});	
+		$("#b").click(function() {
+		console.log("확인2클릭")	
+		$("span").text($("#pw").val());
+	});	
+</script>
+</html>
