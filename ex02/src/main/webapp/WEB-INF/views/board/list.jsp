@@ -49,7 +49,7 @@
                             
                             <!-- 페이지바 -->
                             <c:if test="${pageMaker.prev}">
-                            	<a href="/board/list?pageNum=${pageMaker.startPage-1}&&amount=${pageMaker.cri.amount}"> << </a>&nbsp;&nbsp;
+                            	<a href="/board/list?pageNum=${pageMaker.startPage-1}&&amount=${pageMaker.cri.amount}"> prev </a>&nbsp;&nbsp;
                             </c:if>
                             
                             	<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
@@ -58,7 +58,7 @@
                            		
                            		
                            	<c:if test="${pageMaker.next}">
-                            		<a href="/board/list?pageNum=${pageMaker.endPage+1}&&amount=${pageMaker.cri.amount}"> >> </a>&nbsp;&nbsp;
+                            		<a href="/board/list?pageNum=${pageMaker.endPage+1}&&amount=${pageMaker.cri.amount}"> next </a>&nbsp;&nbsp;
                             </c:if>
 
 
